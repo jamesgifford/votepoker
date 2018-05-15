@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Database\Models;
 
 use Laravel\Spark\Team as SparkTeam;
 

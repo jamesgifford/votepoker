@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Database\Repositories\RoomRepository;
+use App\Database\Repositories\TopicRepository;
+use App\Helpers\RouteHelper;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -26,6 +30,22 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        /**
+         * Route repository binding for Room
+         */
+        Route::bind('room', function ($value)
+        {
+            return RoomRepository::findOrFail(RouteHelper::decodeKey($value)) ?? abort(404);
+        });
+
+        /**
+         * Route repository binding for Topic
+         */
+        Route::bind('topic', function ($value)
+        {
+            return TopicRepository::findOrFail(RouteHelper::decodeKey($value)) ?? abort(404);
+        });
     }
 
     /**

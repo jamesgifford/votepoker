@@ -30,7 +30,7 @@ return [
     ],
 
     'braintree' => [
-        'model'  => App\Models\User::class,
+        'model'  => App\Database\Models\User::class,
         'env' => env('BRAINTREE_ENV'),
         'merchant_id' => env('BRAINTREE_MERCHANT_ID'),
         'key' => env('BRAINTREE_KEY'),

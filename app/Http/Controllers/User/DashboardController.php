@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+/**
+ * Handles account dashboard page(s)
+ */
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,6 +29,6 @@ class HomeController extends Controller
      */
     public function show()
     {
-        return view('home');
+        return view('open.home');
     }
 }

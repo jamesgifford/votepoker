@@ -13,7 +13,6 @@
 
     <style>
         body, html {
-            background: url('/img/spark-bg.png');
             background-repeat: repeat;
             background-size: 300px 200px;
             height: 100%;
@@ -85,9 +84,10 @@
         </nav>
 
         <div class="flex-fill flex-center">
-            <h1 class="text-center">
-                <img src="/img/color-logo.png">
-            </h1>
+            <form action="/room" method="post">
+                {{ csrf_field() }}
+                <input type="submit" class="btn btn-large" value="Create Room" />
+            </form>
         </div>
     </div>
 </body>

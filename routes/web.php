@@ -1,16 +1,32 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+/* Core
+-----------------------------------------------------------------------------*/
 
-Route::get('/', 'WelcomeController@show');
+Route::group(['middleware' => 'auth.temporary'], function() {
 
-Route::get('/home', 'HomeController@show');
+    // Room
+    Route::get('room/{room}', 'Core\RoomController@show');
+    Route::post('room/{room}', 'Core\RoomController@get');
+    Route::post('room/{room}/users', 'Core\RoomController@getUsers');
+    Route::post('room', 'Core\RoomController@store');
+
+    // Topic
+    Route::post('topic', 'Core\TopicController@store');
+    Route::put('topic/{topic}/{action?}', 'Core\TopicController@update');
+
+});
+
+
+/* User
+-----------------------------------------------------------------------------*/
+
+// Dashboard
+Route::get('/home', 'User\DashboardController@show');
+
+
+/* Open
+-----------------------------------------------------------------------------*/
+
+// Welcome
+Route::get('/', 'Open\WelcomeController@show');

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'VotePoker'),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,6 +106,8 @@ return [
 
     'key' => env('APP_KEY'),
 
+    'salt' => env('APP_SALT', 'MyAppSalt'),
+
     'cipher' => 'AES-256-CBC',
 
     /*
@@ -176,8 +178,9 @@ return [
         Laravel\Cashier\CashierServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],
